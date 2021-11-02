@@ -1,5 +1,3 @@
-# portfolio
-
 # seeking
 
 ## サイト概要
