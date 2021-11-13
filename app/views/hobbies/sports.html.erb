@@ -59,12 +59,12 @@
           <div class="text-center mb-2">
             <strong><%= link_to hobby.title, hobby_path(hobby.id), class:"text-dark" %></strong>
             (<%= hobby.name %>)
-            <%= link_to "削除", hobby_path(hobby), method: :delete %>
+            <% if hobby.user == current_user || current_user.admin? %>
+              <%= link_to "削除", hobby_path(hobby), method: :delete %>
+            <% end %>
           </div>
           <div class="text-center">
             <%= attachment_image_tag hobby, :image, format: 'jpg', size: "350x300" %>
-            <%#= image_tag attachment_url(hobby, :image, :fill, 300, 300, format: "jpeg") %>
-            <%#= hobby.attachment_field :image %>
           </div>
         </div>
       <% end %>
