@@ -5,7 +5,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <div class="navigation">
             <ul class="nav flex-column">
-              <li><%= link_to "My Page", games_path, class:"nav-link text-light" %></li>
+              <li><%= link_to "My Page", user_path(@user.id), class:"nav-link text-light" %></li>
               <li><%= link_to "Book Mark", sports_path, class:"nav-link text-light" %></li>
               <li><%= link_to "About", movies_path, class:"nav-link text-light" %></li>
               <li><%= link_to "運営へ連絡", sightseeing_path, class:"nav-link text-light" %></li>
@@ -15,14 +15,15 @@
         </div>
       </nav>
     </div>
-    <div class="col-md-6 mt-1">
-      <div class="text-center mb-5">
-        <%= @hobby.title %>
-        <%= @hobby.name %>
-        <%= @hobby.good_part %>
-        <%= @hobby.bad_part %>
-        <%= attachment_image_tag @hobby, :image, size: "100x100", format: 'jpeg' %>
-        <%= @hobby.introduction %>
+    <div class="col-md-7 mt-1 d-flex justify-content-center">
+      <div>
+        <%= attachment_image_tag @user, :profile_image, size: "50x50", class:"ml-2 rounded-circle mt-3" %>
+      </div>
+      <div>
+        <h3 class="mt-4 ml-2"><%= @user.name %></h3>
+      </div>
+      <div>
+        <%= link_to "Edit", edit_user_path(@user.id), class:"btn btn-dark fas fa-user-cog mt-4 ml-5" %>
       </div>
     </div>
     <div class="col">
