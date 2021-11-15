@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get 'books' => 'hobbies#books', as: 'books'
   get 'sightseeing' => 'hobbies#sightseeing', as: 'sightseeing'
 
-  resources :hobbies, only: [:index, :show, :edit, :destroy, :create, :update]
+  resources :hobbies, only: [:index, :show, :edit, :destroy, :create, :update] do
+     resources :comments, only: [:create, :destroy] #hobbyにコメントのアソシエーション
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

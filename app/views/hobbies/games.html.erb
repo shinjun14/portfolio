@@ -30,12 +30,12 @@
       <%= form_with model: @hobby, url:hobbies_path, local:true do |f| %>
         <%= f.hidden_field :category, :value => "games" %>
         <div class="text-center">
-          <%= f.text_field :title, placeholder:"投稿タイトル", class:"bg-transparent"%>
-          <%= f.text_field :name, placeholder:"作品名", class:"bg-transparent" %>
+          <%= f.text_field :title, placeholder:"一言", class:"bg-transparent"%>
+          <%= f.text_field :name, placeholder:"ゲーム名", class:"bg-transparent" %>
         </div>
         <div class="text-center m-3">
-          <%= f.text_field :good_part, placeholder:"良いところ", class:"bg-transparent" %>
-          <%= f.text_field :bad_part, placeholder:"悪いところ", class:"bg-transparent"%>
+          <%= f.text_field :good_part, placeholder:"良い点", class:"bg-transparent" %>
+          <%= f.text_field :bad_part, placeholder:"悪い点", class:"bg-transparent"%>
         </div>
         <div class="text-center m-3">
           <%= f.attachment_field :image %>
@@ -59,6 +59,7 @@
           <div class="text-center mb-2">
             <strong><%= link_to hobby.title, hobby_path(hobby.id), class:"text-dark" %></strong>
             (<%= hobby.name %>)
+            <%= link_to "#{hobby.comments.count}コメント", hobby_path(hobby.id) %>
             <% if hobby.user == current_user || current_user.admin? %>
               <%= link_to "削除", hobby_path(hobby), method: :delete %>
             <% end %>

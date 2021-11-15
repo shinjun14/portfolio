@@ -15,18 +15,37 @@
         </div>
       </nav>
     </div>
-    <div class="col-md-7 mt-1 d-flex justify-content-center">
-      <div>
-        <%= attachment_image_tag @user, :profile_image, size: "50x50", class:"ml-2 rounded-circle mt-3" %>
+    <div class="col-md-7">
+      <div class="d-flex justify-content-around mt-2">
+        <div>
+          <%= attachment_image_tag @user, :profile_image, size: "100x100", class:"rounded-circle" %>
+          <h3><%= @user.name %></h3>
+        </div>
+        <div>
+          <%= link_to "Edit", edit_user_path(@user.id), class:"btn btn-dark" %>
+        </div>
       </div>
-      <div>
-        <h3 class="mt-4 ml-2"><%= @user.name %></h3>
-      </div>
-      <div>
-        <%= link_to "Edit", edit_user_path(@user.id), class:"btn btn-dark fas fa-user-cog mt-4 ml-5" %>
+      <div class="text-center">
+        <h1>自分の投稿</h1>
+        <% @hobbies.each do |hobby| %>
+        <div class="mb-2">
+          <%= hobby.category %>
+          <div class="text-center">
+            <strong><%= link_to hobby.title, hobby_path(hobby.id), class:"text-dark" %></strong>
+            (<%= hobby.name %>)
+            <%= link_to "#{hobby.comments.count}コメント", hobby_path(hobby.id) %>
+            <% if hobby.user == current_user || current_user.admin? %>
+              <%= link_to "削除", hobby_path(hobby), method: :delete %>
+            <% end %>
+          </div>
+          <div class="text-center">
+            <%= attachment_image_tag hobby, :image, format: 'jpg', size: "350x300" %>
+          </div>
+        </div>
+      <% end %>
       </div>
     </div>
-    <div class="col">
+    <div class="col text-center">
       <h1>おすすめ</h1>
     </div>
   </div>

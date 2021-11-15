@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-md-3">
       <nav class="navbar navbar-expand">
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <div class="navigation">
@@ -16,13 +16,40 @@
       </nav>
     </div>
     <div class="col-md-6 mt-1">
-      <div class="text-center mb-5">
-        <%= @hobby.title %>
-        <%= @hobby.name %>
-        <%= @hobby.good_part %>
-        <%= @hobby.bad_part %>
-        <%= attachment_image_tag @hobby, :image, size: "100x100", format: 'jpeg' %>
-        <%= @hobby.introduction %>
+      <div>
+        <div class="text-center">
+          <h2>作品名</h2>
+          <strong><h2><%= @hobby.name %></h2></strong>
+        </div>
+        <div class="d-flex justify-content-around">
+          <h3>良い点</h3><h3>悪い点</h3>
+        </div>
+        <div class="d-flex justify-content-around">
+          <p><strong><%= @hobby.good_part %></strong></p><p><strong><%= @hobby.bad_part %></strong></p>
+        </div>
+        <div class="d-flex justify-content-center">
+          <%= attachment_image_tag @hobby, :image, format: 'jpg', size: "300x250" %>
+        </div>
+        <div class="d-flex justify-content-center mb-6">
+          <strong><%= @hobby.introduction %></strong>
+        </div>
+      </div>
+      <div class="m-3">
+        <p>コメント数：<%= @hobby.comments.count %></p>
+        <% @hobby.comments.each do |comment| %>
+          <div class="m-2">
+            <%= attachment_image_tag comment.user, :profile_image, size: "50x50", fallback: "user-gf1c075314_1280.png", class:"rounded-circle" %>
+            <%= comment.user.name %>
+            <%= comment.created_at.strftime('%Y/%m/%d') %> <!--コメント日時 -->
+            <%= comment.comment %>
+          </div>
+        <% end %>
+        <div class="text-center">
+          <%= form_with(model:[@hobby, @comment], local: true) do |f| %>
+            <%= f.text_area :comment, rows:'5', placeholder:"コメント", size: "40x5", class:"bg-transparent" %>
+            <%= f.submit "送信", class:"btn btn-success rounded-pill" %>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="col">
