@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_15_041302) do
+ActiveRecord::Schema.define(version: 2021_11_16_072101) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "hobby_id"
@@ -46,9 +46,10 @@ ActiveRecord::Schema.define(version: 2021_11_15_041302) do
     t.float "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.string "image_id"
     t.string "category"
+    t.string "content"
+    t.integer "user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -59,9 +60,12 @@ ActiveRecord::Schema.define(version: 2021_11_15_041302) do
   end
 
   create_table "tag_maps", force: :cascade do |t|
-    t.integer "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "hobby_id"
+    t.integer "tag_id"
+    t.index ["hobby_id"], name: "index_tag_maps_on_hobby_id"
+    t.index ["tag_id"], name: "index_tag_maps_on_tag_id"
   end
 
   create_table "tags", force: :cascade do |t|

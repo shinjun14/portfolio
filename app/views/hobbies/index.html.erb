@@ -1,0 +1,26 @@
+<h3>タグリスト</h3>
+<% @tag_list.each do |list| %>
+  <span>
+    <%= link_to list.tag_name, tag_hobbies_path(tag_id: list.id) %>
+    <%= "(#{list.posts.count}})" %>
+  </span>
+<% end %>
+<hr>
+
+<h3>投稿する</h3>
+<%= form_with(model: @hobby, url: hobbies_path, local: true) do |f| %>
+  <%= f.text_area :content %>
+  <br>
+  <%= %>
+  <%= %>
+  <%= f.text_field :tag_name %>
+  <br>
+  <%= f.submit %>
+<% end %>
+
+<hr>
+
+<h3> 投稿一覧 </h3>
+<% @hobbies.each do |hobby| %>
+  <%= link_to hobby.content, hobby %>
+<% end %>

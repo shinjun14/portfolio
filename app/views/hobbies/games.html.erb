@@ -17,13 +17,13 @@
           <%= f.text_field :bad_part, placeholder:"悪い点", class:"bg-transparent"%>
         </div>
         <div class="text-center" id="rate_stars">
-          <label>評価</label>
+          <label>初心者おすすめ度</label>
         </div>
         <div class="text-center m-3">
           <%= f.attachment_field :image %>
         </div>
         <div class="text-center">
-          <%= f.text_area :introduction, placeholder:"本文", size: "40x5", class:"bg-transparent" %>
+          <%= f.text_area :introduction, placeholder:"おすすめポイント", size: "40x5", class:"bg-transparent" %>
         </div>
         <div class="text-center mb-5">
           <input type="submit" name"commit" value="投稿" class="btn btn-primary" data-disable="Create Hobby" />
@@ -40,12 +40,27 @@
 
       <% @hobbies.each do |hobby| %>
         <div class="mb-5">
-          <div class="ml-5">
+          <div class="ml-5 d-flex justify-content-between">
             <%= link_to user_path(hobby.user.id) do %>
               <%= attachment_image_tag hobby.user, :profile_image, size: "50x50", fallback: "user-gf1c075314_1280.png", class:"rounded-circle" %>
+              <strong><p class="text-dark"><%= hobby.user.name %></p></strong>
             <% end %>
-            <strong><%= hobby.user.name %></strong><br>
+            <div>
+              <% if hobby.favorited_by?(current_user) %>
+                <%= link_to hobby_favorites_path(hobby), method: :delete do %>
+                  <i class="btn btn-dark fas fa-bookmark"></i>
+                <% end %>
+              <% else %>
+                <%= link_to hobby_favorites_path(hobby), method: :post do %>
+                  <i class="btn btn-dark far fa-bookmark"></i>
+                <% end %>
+              <% end %>
+            </div>
+            <p id="hobby-rate-<%=hobby.id %>">
+              初心者おすすめ度
+            </p>
           </div>
+
           <div class="text-center mb-2">
             <strong><%= link_to hobby.title, hobby_path(hobby.id), class:"text-dark" %></strong>
             (<%= hobby.name %>)
@@ -53,10 +68,6 @@
             <% if hobby.user == current_user || current_user.admin? %> <!--削除機能 -->
               <%= link_to "削除", hobby_path(hobby), method: :delete, class:"btn btn-danger" %>
             <% end %>
-          </div>
-
-          <div>
-            <p id="hobby-rate-<%=hobby.id %>"></p>
           </div>
 
           <div class="text-center">
@@ -72,7 +83,6 @@
           readOnly: true,
           score: "<%= hobby.rate %>",
           path: '/assets/'
-          //注目ポイント↑ 平均点を算出し、round関数で切り上げ
         });
       </script>
       <% end %>
