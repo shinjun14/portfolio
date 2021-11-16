@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy #1対n（コメント）
 
+  has_many :favorites, dependent: :destroy #1対nブックマーク機能
+
   attachment :profile_image
   attachment :image
 

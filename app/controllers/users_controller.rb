@@ -5,6 +5,11 @@ class UsersController < ApplicationController
     @hobbies = @user.hobbies
   end
 
+  def bookmarks
+    @favorites = Favorite.where(user_id: current_user.id)
+    @user = current_user
+  end
+
   def edit
     @user = User.find(params[:id])
   end
