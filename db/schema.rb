@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_16_072101) do
+ActiveRecord::Schema.define(version: 2021_11_17_022122) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "hobby_id"
@@ -22,12 +22,10 @@ ActiveRecord::Schema.define(version: 2021_11_16_072101) do
   end
 
   create_table "favorites", force: :cascade do |t|
+    t.integer "hobby_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "hobby_id"
-    t.index ["hobby_id"], name: "index_favorites_on_hobby_id"
-    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -46,10 +44,9 @@ ActiveRecord::Schema.define(version: 2021_11_16_072101) do
     t.float "rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_id"
-    t.string "category"
-    t.string "content"
     t.integer "user_id"
+    t.string "category"
+    t.string "image_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -60,12 +57,9 @@ ActiveRecord::Schema.define(version: 2021_11_16_072101) do
   end
 
   create_table "tag_maps", force: :cascade do |t|
+    t.integer "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "hobby_id"
-    t.integer "tag_id"
-    t.index ["hobby_id"], name: "index_tag_maps_on_hobby_id"
-    t.index ["tag_id"], name: "index_tag_maps_on_tag_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -80,11 +74,10 @@ ActiveRecord::Schema.define(version: 2021_11_16_072101) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
     t.string "profile_image_id"
-    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

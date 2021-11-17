@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @hobbies = @user.hobbies
+    @hobby = Hobby
   end
 
   def bookmarks

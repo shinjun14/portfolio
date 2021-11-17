@@ -36,6 +36,7 @@ class HobbiesController < ApplicationController
   def show
     @hobby = Hobby.find(params[:id])
     @comment = Comment.new
+    @user = User
   end
 
   def create

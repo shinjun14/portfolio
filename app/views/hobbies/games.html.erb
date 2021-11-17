@@ -1,34 +1,38 @@
 <div class="container">
   <div class="row">
     <div class="col">
+      <!-- サイドバー -->
       <%= render "layouts/sidebar" %>
     </div>
 
-    <div class="col-md-7 mt-1">
-      <h1 class="text-center">投稿してみよう！</h1>
-      <%= form_with model: @hobby, url:hobbies_path, local:true do |f| %>
-        <%= f.hidden_field :category, :value => "games" %>
-        <div class="text-center">
-          <%= f.text_field :title, placeholder:"一言", class:"bg-transparent"%>
-          <%= f.text_field :name, placeholder:"ゲーム名", class:"bg-transparent" %>
-        </div>
-        <div class="text-center m-3">
-          <%= f.text_field :good_part, placeholder:"良い点", class:"bg-transparent" %>
-          <%= f.text_field :bad_part, placeholder:"悪い点", class:"bg-transparent"%>
-        </div>
-        <div class="text-center" id="rate_stars">
-          <label>初心者おすすめ度</label>
-        </div>
-        <div class="text-center m-3">
-          <%= f.attachment_field :image %>
-        </div>
-        <div class="text-center">
-          <%= f.text_area :introduction, placeholder:"おすすめポイント", size: "40x5", class:"bg-transparent" %>
-        </div>
-        <div class="text-center mb-5">
-          <input type="submit" name"commit" value="投稿" class="btn btn-primary" data-disable="Create Hobby" />
-        </div>
-      <% end %>
+    <div class="col-md-7 border-left border-right pt-2">
+      <!-- 投稿フォーム -->
+      <div class="border">
+        <h1 class="text-center">投稿してみよう！</h1>
+        <%= form_with model: @hobby, url:hobbies_path, local:true do |f| %>
+          <%= f.hidden_field :category, :value => "games" %>
+          <div class="text-center">
+            <%= f.text_field :title, placeholder:"一言", class:"bg-transparent"%>
+            <%= f.text_field :name, placeholder:"ゲーム名", class:"bg-transparent" %>
+          </div>
+          <div class="text-center m-3">
+            <%= f.text_field :good_part, placeholder:"良い点", class:"bg-transparent" %>
+            <%= f.text_field :bad_part, placeholder:"悪い点", class:"bg-transparent"%>
+          </div>
+          <div class="text-center" id="rate_stars">
+            <label>初心者おすすめ度</label>
+          </div>
+          <div class="text-center m-3">
+            <%= f.attachment_field :image %>
+          </div>
+          <div class="text-center">
+            <%= f.text_area :introduction, placeholder:"おすすめポイント", size: "40x5", class:"bg-transparent" %>
+          </div>
+          <div class="text-center mb-5">
+            <input type="submit" name"commit" value="投稿" class="btn btn-primary" data-disable="Create Hobby" />
+          </div>
+        <% end %>
+      </div>
       <script>
         $('#rate_stars').raty({
           starOn: "<%= asset_path('star-on.png') %>",
@@ -38,24 +42,14 @@
         });
       </script>
 
+      <!-- 投稿一覧 -->
       <% @hobbies.each do |hobby| %>
-        <div class="mb-5">
+        <div class="border p-4">
           <div class="ml-5 d-flex justify-content-between">
             <%= link_to user_path(hobby.user.id) do %>
               <%= attachment_image_tag hobby.user, :profile_image, size: "50x50", fallback: "user-gf1c075314_1280.png", class:"rounded-circle" %>
               <strong><p class="text-dark"><%= hobby.user.name %></p></strong>
             <% end %>
-            <div>
-              <% if hobby.favorited_by?(current_user) %>
-                <%= link_to hobby_favorites_path(hobby), method: :delete do %>
-                  <i class="btn btn-dark fas fa-bookmark"></i>
-                <% end %>
-              <% else %>
-                <%= link_to hobby_favorites_path(hobby), method: :post do %>
-                  <i class="btn btn-dark far fa-bookmark"></i>
-                <% end %>
-              <% end %>
-            </div>
             <p id="hobby-rate-<%=hobby.id %>">
               初心者おすすめ度
             </p>
@@ -71,7 +65,20 @@
           </div>
 
           <div class="text-center">
-            <%= attachment_image_tag hobby, :image, format: 'jpg', size: "350x300" %>
+            <%= link_to hobby_path(hobby.id) do %>
+              <%= attachment_image_tag hobby, :image, format: 'jpg', size: "350x300" %>
+            <% end %>
+          </div>
+          <div class="text-right">
+            <% if hobby.favorited_by?(current_user) %>
+              <%= link_to hobby_favorites_path(hobby), method: :delete do %>
+                <i class="btn btn-dark fas fa-bookmark"></i>
+              <% end %>
+            <% else %>
+              <%= link_to hobby_favorites_path(hobby), method: :post do %>
+                <i class="btn btn-light far fa-bookmark"></i>
+              <% end %>
+            <% end %>
           </div>
         </div>
              <script>
@@ -86,10 +93,10 @@
         });
       </script>
       <% end %>
-
     </div>
 
     <div class="col">
+      <!-- おすすめ一覧 -->
       <h1>おすすめ</h1>
     </div>
   </div>

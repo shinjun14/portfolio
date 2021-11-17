@@ -5,15 +5,12 @@
     </div>
 
     <div class="col-md-7 mt-1">
-      <% if @model == "user" %>
-        <% @records.each do |user| %>
-
-        <% end %>
-
-      <% elsif @model == "hobby" %>
-        <% @records.each do |hobby| %>
-          <%= render 'hobbies/results', hobbies: @records %>
-        <% end %>
+      <% if @model == 'user' %>
+        <h3>【Usersモデルの検索結果】検索ワード：<%= @content %></h3>
+        <%= render 'users/results', users: @records %>
+      <% else @model == 'posts' %>
+        <h3>【Postsモデルの検索結果】検索ワード：<%= @content %></h3>
+          <%= render 'hobbies/results', hobby: @records, hobby: @hobby, user: @user %>
       <% end %>
     </div>
     <div class="col">

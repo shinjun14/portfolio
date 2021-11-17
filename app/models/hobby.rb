@@ -11,16 +11,4 @@ class Hobby < ApplicationRecord
 
   attachment :image
 
-  def self.search_for(content, method)
-    if method == 'perfect'
-      Hobby.where(title: content)
-    elsif method == 'forward'
-      Hobby.where('name LIKE ?', content+'%')
-    elsif method == 'backward'
-      Hobby.where('name LIKE ?', '%'+content)
-    else
-      Hobby.where('name LIKE ?', '%'+content+'%')
-    end
-  end
-
 end

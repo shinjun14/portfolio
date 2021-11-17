@@ -51,7 +51,7 @@
       <% @hobbies.each do |hobby| %>
         <div class="mb-5">
           <div class="ml-5">
-            <%= link_to user_path(@user) do %>
+            <%= link_to user_path(hobby.user.id) do %>
               <%= attachment_image_tag hobby.user, :profile_image, size: "50x50", class:"rounded-circle" %>
             <% end %>
             <strong><%= hobby.user.name %></strong><br>
