@@ -24,7 +24,7 @@
                 <%= favorite.hobby.user.name %>
               </td>
               <td>
-                <%= link_to hobby_path(favorite.hobby) do %>
+                <%= link_to hobby_path(favorite.hobby), class:"text-dark" do %>
                   <%= favorite.hobby.title %>
                 <% end %>
               </td>

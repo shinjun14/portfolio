@@ -4,14 +4,9 @@
       <%= render "layouts/sidebar" %>
     </div>
 
-    <div class="col-md-7 mt-1">
-      <% if @model == 'user' %>
-        <h3>【Usersモデルの検索結果】検索ワード：<%= @content %></h3>
-        <%= render 'users/results', users: @records %>
-      <% else @model == 'posts' %>
-        <h3>【Postsモデルの検索結果】検索ワード：<%= @content %></h3>
-          <%= render 'hobbies/results', hobby: @records, hobby: @hobby, user: @user %>
-      <% end %>
+    <div class="col-md-7 border-left border-right pt-2">
+      <% @model == 'hobbies' %>
+      <%= render 'hobbies/results', hobbies: @records %>
     </div>
     <div class="col">
       <h1>おすすめ</h1>

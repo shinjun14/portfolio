@@ -5,10 +5,12 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.hobby_id = @hobby.id
     @comment.save
-    redirect_back(fallback_location: root_path)
   end
 
   def destroy
+    @hobby = Hobby.find(params[:hobby_id])
+    @comment = Comment.find_by(id: params[:id], hobby_id: params[:hobby_id])
+    @comment.destroy
   end
 
   private

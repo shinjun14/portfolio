@@ -1,76 +1,53 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <nav class="navbar navbar-expand">
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <div class="navigation">
-            <ul class="nav flex-column">
-              <% if user_signed_in? %>
-                <li><%= link_to "My Page", user_path(@user.id), class:"nav-link text-light" %></li>
-                <li><%= link_to "Book Mark", sports_path, class:"nav-link text-light" %></li>
-                <li><%= link_to "About", movies_path, class:"nav-link text-light" %></li>
-                <li><%= link_to "運営へ連絡", sightseeing_path, class:"nav-link text-light" %></li>
-                <li><%= link_to "利用規約", books_path, class:"nav-link text-light" %></li>
-                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link text-light" %></li>
-              <% else %>
-                <li><%= link_to "ログイン", new_user_session_path, class:"nav-link text-light" %></li>
-                <li><%= link_to "新規登録", new_user_registration_path, class:"nav-link text-light" %></li>
-                <li><%= link_to "Book Mark", sports_path, class:"nav-link text-light" %></li>
-                <li><%= link_to "About", movies_path, class:"nav-link text-light" %></li>
-                <li><%= link_to "利用規約", books_path, class:"nav-link text-light" %></li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <!-- サイドバー -->
+      <%= render "layouts/sidebar" %>
     </div>
 
-    <div class="col-md-7 mt-1">
-      <h1 class="text-center">投稿してみよう！</h1>
-      <%= form_with model: @hobby, url:hobbies_path, local:true do |f| %>
-        <%= f.hidden_field :category, :value => "books" %>
-        <div class="text-center">
-          <%= f.text_field :title, placeholder:"一言", class:"bg-transparent"%>
-          <%= f.text_field :name, placeholder:"作品名", class:"bg-transparent" %>
-        </div>
-        <div class="text-center m-3">
-          <%= f.text_field :good_part, placeholder:"良い点", class:"bg-transparent" %>
-          <%= f.text_field :bad_part, placeholder:"悪い点", class:"bg-transparent"%>
-        </div>
-        <div class="text-center m-3">
-          <%= f.attachment_field :image %>
-        </div>
-        <div class="text-center">
-          <%= f.text_area :introduction, placeholder:"あらすじ・感想など", size: "40x5", class:"bg-transparent" %>
-        </div>
-        <div class="text-center mb-5">
-          <input type="submit" name"commit" value="投稿" class="btn btn-primary" data-disable="Create Hobby" />
-        </div>
-      <% end %>
-
-      <% @hobbies.each do |hobby| %>
-        <div class="mb-5">
-          <div class="ml-5">
-            <%= link_to user_path(@user) do %>
-              <%= attachment_image_tag hobby.user, :profile_image, size: "50x50", class:"rounded-circle" %>
-            <% end %>
-            <strong><%= hobby.user.name %></strong><br>
+    <div class="col-md-7 border-left border-right pt-2">
+      <!-- 投稿フォーム -->
+      <div class="border">
+        <h1 class="text-center">投稿してみよう！</h1>
+        <%= form_with model: @hobby, url:hobbies_path, local:true do |f| %>
+          <%= f.hidden_field :category, :value => "books" %>
+          <div class="text-center">
+            <%= f.text_field :title, placeholder:"一言", class:"bg-transparent"%>
+            <%= f.text_field :name, placeholder:"作品タイトル", class:"bg-transparent" %>
           </div>
-          <div class="text-center mb-2">
-            <strong><%= link_to hobby.title, hobby_path(hobby.id), class:"text-dark" %></strong>
-            (<%= hobby.name %>)
-            <% if hobby.user == current_user || current_user.admin? %>
-              <%= link_to "削除", hobby_path(hobby), method: :delete %>
-            <% end %>
+          <div class="text-center m-3">
+            <%= f.text_field :good_part, placeholder:"良い点", class:"bg-transparent" %>
+            <%= f.text_field :bad_part, placeholder:"悪い点", class:"bg-transparent"%>
+          </div>
+          <div class="text-center" id="rate_stars">
+            <label>初心者おすすめ度</label>
+          </div>
+          <div class="text-center m-3">
+            <%= f.attachment_field :image %>
           </div>
           <div class="text-center">
-            <%= attachment_image_tag hobby, :image, format: 'jpg', size: "350x300" %>
+            <%= f.text_area :introduction, placeholder:"おすすめポイント", size: "40x5", class:"bg-transparent" %>
           </div>
-        </div>
-      <% end %>
+          <div class="text-center mb-5">
+            <input type="submit" name"commit" value="投稿" class="btn btn-primary" data-disable="Create Hobby" />
+          </div>
+        <% end %>
+      </div>
+      <script>
+        $('#rate_stars').raty({
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          starHalf: "<%= asset_path('star-half.png') %>",
+          scoreName: 'hobby[rate]'
+        });
+      </script>
+
+      <!-- 投稿一覧 -->
+      <%= render "hobbies/list", hobbies: @hobbies, user: @user %>
     </div>
 
     <div class="col">
+      <!-- おすすめ一覧 -->
       <h1>おすすめ</h1>
     </div>
   </div>
