@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_20_061022) do
+ActiveRecord::Schema.define(version: 2021_11_09_055756) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "hobby_id"
@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 2021_11_20_061022) do
     t.string "good_part"
     t.string "bad_part"
     t.float "rate"
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "category"
   end
 
   create_table "relationships", force: :cascade do |t|

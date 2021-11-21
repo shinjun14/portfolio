@@ -9,6 +9,7 @@ class CreateHobbies < ActiveRecord::Migration[5.2]
       t.string :good_part
       t.string :bad_part
       t.float :rate
+      t.string :category
 
       t.timestamps
     end
