@@ -1,3 +1,55 @@
 // Place all the styles related to the hobbies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.games {
+  background-image: image-url("minecraft-ga85f954a2_1280.jpg");
+  width: 45%;
+  height: 150px;
+  margin: 5px auto;
+  background-size: cover;
+ }
+
+ .sports {
+  background-image: image-url("soccer-g1dbea0601_1920.jpg");
+  width: 45%;
+  height: 150px;
+  margin: auto;
+  background-size: cover;
+ }
+
+ .movies {
+  background-image: image-url("movie-theater-g5a67460fb_1920.jpg");
+  width: 45%;
+  height: 150px;
+  margin: auto;
+  background-size: cover;
+ }
+
+ .sightseeing {
+  background-image: image-url("japanese-g3bf78fdcc_1920.jpg");
+  width: 45%;
+  height: 150px;
+  margin: 5px auto;
+  background-size: cover;
+ }
+
+ .books {
+  background-image: image-url("books-gd57efc7dc_1920.jpg");
+  width: 45%;
+  height: 150px;
+  margin: 5px auto;
+  background-size: cover;
+ }
+
+ .text {
+　text-decoration: none;
+  font-size: 30px;
+　font-weight: bold;
+  text-shadow: 1px 1px 2px black;
+  padding: 5px;
+  color: white;
+  text-align: center; /* 文字を中央揃えにする */
+  padding-top: 60px;
+ }

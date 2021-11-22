@@ -1,26 +1,41 @@
-<h3>タグリスト</h3>
-<% @tag_list.each do |list| %>
-  <span>
-    <%= link_to list.tag_name, tag_hobbies_path(tag_id: list.id) %>
-    <%= "(#{list.posts.count}})" %>
-  </span>
-<% end %>
-<hr>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <!-- サイドバー -->
+      <%= render "layouts/sidebar" %>
+    </div>
 
-<h3>投稿する</h3>
-<%= form_with(model: @hobby, url: hobbies_path, local: true) do |f| %>
-  <%= f.text_area :content %>
-  <br>
-  <%= %>
-  <%= %>
-  <%= f.text_field :tag_name %>
-  <br>
-  <%= f.submit %>
-<% end %>
+    <div class="col-md-7 border-left border-right pt-2 d-flex flex-wrap">
+      <a class="games", href="/hobbies/games">
+        <div>
+          <h2 class="text">Games</h2>
+        </div>
+      </a>
+      <a class="games", href="/hobbies/games">
+        <div>
+          <h2 class="text">Sports</h2>
+        </div>
+      </a>
+      <a class="movies", href="/hobbies/movies">
+        <div>
+          <h2 class="text">Movies</h2>
+        </div>
+      </a>
+      <a class="sightseeing", href="/hobbies/sightseeing">
+        <div>
+          <h2 class="text">Sightseeing</h2>
+        </div>
+      </a>
+      <a class="books", href="/hobbies/books">
+        <div>
+          <h2 class="text">Books</h2>
+        </div>
+      </a>
+    </div>
 
-<hr>
-
-<h3> 投稿一覧 </h3>
-<% @hobbies.each do |hobby| %>
-  <%= link_to hobby.content, hobby %>
-<% end %>
+    <div class="col">
+      <!-- おすすめ一覧 -->
+      <h1>おすすめ</h1>
+    </div>
+  </div>
+</div>

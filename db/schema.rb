@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_09_055756) do
+ActiveRecord::Schema.define(version: 2021_11_22_050039) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "hobby_id"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_055756) do
 
   create_table "hobbies", force: :cascade do |t|
     t.integer "genre_id"
-    t.integer "image_id"
+    t.string "image_id"
     t.string "name"
     t.string "title"
     t.text "introduction"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2021_11_09_055756) do
     t.string "bad_part"
     t.float "rate"
     t.string "category"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -74,8 +75,10 @@ ActiveRecord::Schema.define(version: 2021_11_09_055756) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
+    t.string "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
