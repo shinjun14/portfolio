@@ -9,6 +9,11 @@
           <%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "user-gf1c075314_1280.png", class:"rounded-circle" %>
           <h3><%= @user.name %></h3>
         </div>
+
+        <div class="button<%= @user.id %>">
+          <%= render "relationships/button", user: @user %>
+        </div>
+
         <div>
           <%= link_to "Edit", edit_user_path(@user.id), class:"btn btn-dark" %>
         </div>

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= render "layouts/sidebar" %>
+    </div>
+    <div class="col-md-7 border-left border-right pt-2">
+      <h1>Followers</h1>
+      <table class='table'>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= attachment_image_tag user, :profile_image, size: "40x40", format: 'jpeg', fallback: "user-gf1c075314_1280.png" %></td>
+              <td><%= user.name %></td>
+              <td>フォロー<%= user.followings.count %>人</td>
+              <td>フォロワー<%= user.followers.count %>人</td>
+           </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col text-center">
+      <%= render "layouts/recommendation", hobby: @osusume, user: @user %>
+    </div>
+  </div>
+</div>
