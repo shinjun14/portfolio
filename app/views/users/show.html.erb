@@ -1,24 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <nav class="navbar navbar-expand">
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <div class="navigation">
-            <ul class="nav flex-column">
-              <li><%= link_to "My Page", user_path(@user.id), class:"nav-link text-light" %></li>
-              <li><%= link_to "Book Mark", sports_path, class:"nav-link text-light" %></li>
-              <li><%= link_to "About", movies_path, class:"nav-link text-light" %></li>
-              <li><%= link_to "運営へ連絡", sightseeing_path, class:"nav-link text-light" %></li>
-              <li><%= link_to "利用規約", books_path, class:"nav-link text-light" %></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <%= render "layouts/sidebar" %>
     </div>
-    <div class="col-md-7">
-      <div class="d-flex justify-content-around mt-2">
-        <div>
-          <%= attachment_image_tag @user, :profile_image, size: "100x100", class:"rounded-circle" %>
+    <div class="col-md-7 border-left border-right pt-2">
+      <div class="d-flex justify-content-around">
+        <div class="text-center">
+          <%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "user-gf1c075314_1280.png", class:"rounded-circle" %>
           <h3><%= @user.name %></h3>
         </div>
         <div>
@@ -27,26 +15,11 @@
       </div>
       <div class="text-center">
         <h1>自分の投稿</h1>
-        <% @hobbies.each do |hobby| %>
-        <div class="mb-2">
-          <%= hobby.category %>
-          <div class="text-center">
-            <strong><%= link_to hobby.title, hobby_path(hobby.id), class:"text-dark" %></strong>
-            (<%= hobby.name %>)
-            <%= link_to "#{hobby.comments.count}コメント", hobby_path(hobby.id) %>
-            <% if hobby.user == current_user || current_user.admin? %>
-              <%= link_to "削除", hobby_path(hobby), method: :delete %>
-            <% end %>
-          </div>
-          <div class="text-center">
-            <%= attachment_image_tag hobby, :image, format: 'jpg', size: "350x300" %>
-          </div>
-        </div>
-      <% end %>
+        <%= render "hobbies/list", hobbies: @hobbies, user: @user %>
       </div>
     </div>
     <div class="col text-center">
-      <h1>おすすめ</h1>
+      <%= render "layouts/recommendation", hobby: @osusume, user: @user %>
     </div>
   </div>
 </div>

@@ -1,42 +1,50 @@
 class HobbiesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
+    @osusume = Hobby.all.order(created_at: :desc).limit(3)
   end
 
   def games
     @hobbies = Hobby.where(category:"games").order(created_at: :desc)
     @hobby = Hobby.new
     @user = current_user
+    @osusume = Hobby.all.order(created_at: :desc).limit(3)
   end
 
   def sports
     @hobbies = Hobby.where(category:"sports").order(created_at: :desc)
     @hobby = Hobby.new
     @user = current_user
+    @osusume = Hobby.all.order(created_at: :desc).limit(3)
   end
 
   def movies
     @hobbies = Hobby.where(category:"movies").order(created_at: :desc)
     @hobby = Hobby.new
     @user = current_user
+    @osusume = Hobby.all.order(created_at: :desc).limit(3)
   end
 
   def sightseeing
     @hobbies = Hobby.where(category:"sightseeing").order(created_at: :desc)
     @hobby = Hobby.new
     @user = current_user
+    @osusume = Hobby.all.order(created_at: :desc).limit(3)
   end
 
   def books
     @hobbies = Hobby.where(category:"books").order(created_at: :desc)
     @hobby = Hobby.new
     @user = current_user
+    @osusume = Hobby.all.order(created_at: :desc).limit(3)
   end
 
   def show
     @hobby = Hobby.find(params[:id])
     @comment = Comment.new
     @user = User
+    @osusume = Hobby.all.order(created_at: :desc).limit(3)
   end
 
   def create

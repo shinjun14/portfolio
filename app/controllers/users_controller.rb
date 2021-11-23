@@ -5,11 +5,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @hobbies = @user.hobbies
     @hobby = Hobby
+    @osusume = Hobby.all.order(created_at: :desc).limit(3)
   end
 
   def bookmarks
     @favorites = Favorite.where(user_id: current_user.id)
     @user = current_user
+    @osusume = Hobby.all.order(created_at: :desc).limit(3)
   end
 
   def edit

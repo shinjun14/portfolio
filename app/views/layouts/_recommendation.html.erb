@@ -1,0 +1,19 @@
+<h1 class="text-center">新規投稿</h1>
+<div>
+  <% @osusume.each do |hobby| %>
+    <div class="text-center">
+      <div>
+        <%= hobby.name %>
+      </div>
+      <di>
+        (<%= hobby.category %>)
+      </di>
+      <div>
+        <%= link_to hobby_path(hobby.id) do %>
+          <%= attachment_image_tag hobby, :image, format: 'jpg', size: "150x130" %>
+        <% end %>
+      </div>
+      <hr>
+    </div>
+  <% end %>
+</div>

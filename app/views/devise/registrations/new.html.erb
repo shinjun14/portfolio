@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col mx-auto">
-      <h2>Sign up</h2>
+      <h2 class="text-center">Sign up</h2>
       <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -23,7 +23,7 @@
           <%= f.password_field :password, autocomplete: "new-password" %>
         </div>
 
-        <div class="field text-center">
+        <div class="field text-center mb-3">
           <%= f.label :password_confirmation %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
