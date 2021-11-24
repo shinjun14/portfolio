@@ -73,6 +73,13 @@ gem "refile-mini_magick"
 
 gem "ransack"
 
+group :development do
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec'
+end
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

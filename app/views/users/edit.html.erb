@@ -5,20 +5,20 @@
     <div class="col-md-6 mt-1">
       <div class="mb-5">
         <%= form_with model:@user, local: true do |f| %>
-        <div class="image-button">
-          <%= f.attachment_field :profile_image, id: "image" %>
-        </div>
-        <div>
-          <%= attachment_image_tag @user, :profile_image, size: "150x150", class:"ml-2 rounded-circle mt-3 mb-4" %>
-          <p class="fas fa-camera fa-2x" id="img_field" onClick="$('#image').click()"></p>
-        </div>
-        <div class="form-group mb-3">
-          <label for="user_name"></label>
-          <input type="text" class="form-control user_name bg-transparent" placeholder="名前" name="user[name]" id="user_name">
-        </div>
-        <div class="text-center">
-          <%= f.submit '変更', class:"btn btn-dark" %>
-        </div>
+          <div class="image-button">
+            <%= f.attachment_field :profile_image, id: "image" %>
+          </div>
+          <div>
+            <%= attachment_image_tag @user, :profile_image, size: "150x150", fallback: "user-gf1c075314_1280.png", class:"ml-2 rounded-circle mt-3 mb-4" %>
+            <p class="fas fa-camera fa-2x text-light" id="img_field" onClick="$('#image').click()"></p>
+          </div>
+          <div class="form-group mb-3 mt-3">
+            <label for="user_name"></label>
+            <%= f.text_field :name, placeholder:"名前", size:"60", class:"bg-transparent" %>
+          </div>
+          <div class="text-center">
+            <%= f.submit '変更', class:"btn btn-dark" %>
+          </div>
         <% end %>
       </div>
     </div>

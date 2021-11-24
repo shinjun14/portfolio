@@ -2,7 +2,7 @@
   <div class="m-2">
     <%= attachment_image_tag comment.user, :profile_image, size: "50x50", fallback: "user-gf1c075314_1280.png", class:"rounded-circle" %>
     <%= comment.user.name %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %> <!--コメント日時 -->
+    <%= hobby.created_at.to_s(:datetime_jp) %> <!--コメント日時 -->
     <%= comment.comment %>
   </div>
 <% end %>

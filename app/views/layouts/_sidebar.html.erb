@@ -6,7 +6,6 @@
           <li><%= link_to "My Page", user_path(current_user.id), class:"nav-link text-light" %></li>
           <li><%= link_to "Book Mark", bookmarks_path, class:"nav-link text-light" %></li>
           <li><%= link_to "About", movies_path, class:"nav-link text-light" %></li>
-          <li><%= link_to "運営へ連絡", sightseeing_path, class:"nav-link text-light" %></li>
           <li><%= link_to "利用規約", homes_terms_path, class:"nav-link text-light" %></li>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link text-light" %></li>
         <% else %>

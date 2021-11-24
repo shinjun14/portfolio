@@ -19,15 +19,9 @@
 
         <!-- 投稿内容 -->
         <div class="text-right">
-          <% if @hobby.favorited_by?(current_user) %>
-            <%= link_to hobby_favorites_path(@hobby), method: :delete do %>
-              <i class="btn btn-light fas fa-bookmark"></i>
-            <% end %>
-          <% else %>
-            <%= link_to hobby_favorites_path(@hobby), method: :post do %>
-              <i class="btn btn-light far fa-bookmark"></i>
-            <% end %>
-          <% end %>
+          <div class="bookmark-btn<%= @hobby.id %>">
+            <%= render "favorites/bookmark-btn", hobby: @hobby %>
+          </div>
         </div>
         <div class="text-center">
           <strong><h2>【<%= @hobby.name %>】</h2></strong>

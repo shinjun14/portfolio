@@ -1,0 +1,9 @@
+<% if hobby.favorited_by?(current_user) %>
+  <%= link_to hobby_favorites_path(hobby), method: :delete, remote: true do %>
+    <i class="btn btn-light fas fa-bookmark"></i>
+  <% end %>
+<% else %>
+  <%= link_to hobby_favorites_path(hobby), method: :post, remote: true do %>
+    <i class="btn btn-light far fa-bookmark"></i>
+  <% end %>
+<% end %>

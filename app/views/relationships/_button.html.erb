@@ -11,7 +11,7 @@
     <% end %>
   </div>
   <div>
-    <%= link_to user_followers_url(@user.id), class:"text-dark" do %>
+    <%= link_to user_followers_url(@user.id), class:"text-light" do %>
       Followers　<%= @user.followers.count %>人
     <% end %><br>
     <%= link_to user_followings_url(@user.id), class:"text-light" do %>
