@@ -13,16 +13,11 @@
             <strong><p class="text-dark"><%= @hobby.user.name %></p></strong>
           <% end %>
           <p id="hobby-rate-<%=@hobby.id %>">
-            初心者おすすめ度
+            おすすめ度
           </p>
         </div>
 
         <!-- 投稿内容 -->
-        <div class="text-right">
-          <div class="bookmark-btn<%= @hobby.id %>">
-            <%= render "favorites/bookmark-btn", hobby: @hobby %>
-          </div>
-        </div>
         <div class="text-center">
           <strong><h2>【<%= @hobby.name %>】</h2></strong>
         </div>
@@ -38,7 +33,23 @@
         <div class="d-flex justify-content-center mb-6">
           <strong><%= @hobby.introduction %></strong>
         </div>
+
+        <div class="d-flex justify-content-around mt-3">
+        <!-- いいね機能 -->
+          <div class="text-center">
+            <div class="like-btn<%= @hobby.id %>">
+              <%= render 'likes/like-btn', hobby: @hobby %>
+            </div>
+          </div>
+          <!-- ブックマーク機能 -->
+          <div class="text-right">
+            <div class="bookmark-btn<%= @hobby.id %>">
+              <%= render "favorites/bookmark-btn", hobby: @hobby %>
+            </div>
+          </div>
+        </div>
       </div>
+
 
       <!-- コメント機能 -->
       <div class="p-3 border-top border-left border-right">

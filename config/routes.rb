@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+    patch 'withdraw' => 'users#withdraw', as: 'withdraw'
+    get 'unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
   end
 
   #ホビー
@@ -23,6 +25,7 @@ Rails.application.routes.draw do
   resources :hobbies, only: [:index, :show, :edit, :destroy, :create, :update] do
      resources :comments, only: [:create, :destroy] #hobbyにコメントをネスト
      resource :favorites, only: [:create, :destroy]
+     resource :likes, only: [:create, :destroy]
   end
 
   #検索

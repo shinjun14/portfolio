@@ -5,10 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :hobbies, dependent: :destroy #1対n（投稿）
-
   has_many :comments, dependent: :destroy #1対n（コメント）
-
   has_many :favorites, dependent: :destroy #1対nブックマーク機能
+
+  has_many :likes, dependent: :destroy #いいね機能
+  has_many :liked_hobbies, through: :likes, source: :hobby
 
   attachment :profile_image
   attachment :image
@@ -32,6 +33,10 @@ class User < ApplicationRecord
 
   def following?(user)
     followings.include?(user)
+  end
+
+  def active_for_authentication?
+    super && (is_deleted == false)
   end
 
   validates :name, presence: true, uniqueness: true, length: { minimum: 2, maximum: 20 }

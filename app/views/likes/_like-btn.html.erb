@@ -1,0 +1,11 @@
+<% if hobby.liked_by?(current_user) %>
+  <%= link_to hobby_likes_path(hobby), method: :delete, remote: true do %>
+    <i class="text-dark fas fa-thumbs-up fa-lg"></i>
+  <% end %>
+  <%= hobby.likes.count %>
+<% else %>
+  <%= link_to hobby_likes_path(hobby), method: :post, remote: true do %>
+    <i class="text-dark far fa-thumbs-up fa-lg"></i>
+  <% end %>
+  <%= hobby.likes.count %>
+<% end %>

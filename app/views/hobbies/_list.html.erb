@@ -7,7 +7,7 @@
         <strong><p class="text-dark"><%= hobby.user.name %></p></strong>
       <% end %>
       <p id="hobby-rate-<%=hobby.id %>">
-        初心者おすすめ度
+        おすすめ度
       </p>
       <%= hobby.created_at.to_s(:datetime_jp) %>
     </div>
@@ -24,14 +24,22 @@
 
     <div class="text-center">
       <%= link_to hobby_path(hobby.id) do %>
-        <%= attachment_image_tag hobby, :image, format: 'jpg', size: "300x250" %>
+        <%= attachment_image_tag hobby, :image, format: 'jpg', size: "300x250", fallback: "user-gf1c075314_1280.png" %>
       <% end %>
     </div>
 
-    <!-- ブックマーク機能 -->
-    <div class="text-right">
-      <div class="bookmark-btn<%= hobby.id %>">
-        <%= render "favorites/bookmark-btn", hobby: hobby %>
+    <div class="d-flex justify-content-around mt-3">
+    <!-- いいね機能 -->
+      <div class="text-center">
+        <div class="like-btn<%= hobby.id %>">
+          <%= render 'likes/like-btn', hobby: hobby %>
+        </div>
+      </div>
+      <!-- ブックマーク機能 -->
+      <div class="text-right">
+        <div class="bookmark-btn<%= hobby.id %>">
+          <%= render "favorites/bookmark-btn", hobby: hobby %>
+        </div>
       </div>
     </div>
   </div>
