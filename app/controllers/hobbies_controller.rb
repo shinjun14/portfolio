@@ -53,6 +53,31 @@ class HobbiesController < ApplicationController
     if @hobby.save
       flash[:notice] = "You have created book successfully."
       redirect_back(fallback_location: root_path)
+
+    elsif @hobby.category == "sports"
+      @hobbies = Hobby.where(category:"sports").order(created_at: :desc)
+      @osusume = Hobby.all.order(created_at: :desc).limit(3)
+      @user = current_user
+      render :sports
+
+    elsif @hobby.category == "movies"
+      @hobbies = Hobby.where(category:"movies").order(created_at: :desc)
+      @osusume = Hobby.all.order(created_at: :desc).limit(3)
+      @user = current_user
+      render :movies
+
+    elsif @hobby.category == "sightseeing"
+      @hobbies = Hobby.where(category:"sightseeing").order(created_at: :desc)
+      @osusume = Hobby.all.order(created_at: :desc).limit(3)
+      @user = current_user
+      render :sightseeing
+
+    elsif @hobby.category == "books"
+      @hobbies = Hobby.where(category:"books").order(created_at: :desc)
+      @osusume = Hobby.all.order(created_at: :desc).limit(3)
+      @user = current_user
+      render :books
+
     else
       @hobbies = Hobby.where(category:"games").order(created_at: :desc)
       @osusume = Hobby.all.order(created_at: :desc).limit(3)
