@@ -6,6 +6,9 @@
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field text-center">
+          <div>
+            <%= render 'layouts/error_messages', model: f.object %>
+          </div>
           <%= f.label :name %><br />
           <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
         </div>

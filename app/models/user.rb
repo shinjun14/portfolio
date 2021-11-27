@@ -39,6 +39,6 @@ class User < ApplicationRecord
     super && (is_deleted == false)
   end
 
-  validates :name, presence: true, uniqueness: true, length: { minimum: 2, maximum: 20 }
+  validates :name, presence: { message: 'を入力してください。' }
 
 end

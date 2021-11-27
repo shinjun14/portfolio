@@ -11,18 +11,21 @@
         <h1 class="text-center">Sightseeing</h1>
         <%= form_with model: @hobby, url:hobbies_path, local:true do |f| %>
           <%= f.hidden_field :category, :value => "sightseeing" %>
+          <div>
+            <%= render 'layouts/error_messages', model: f.object %>
+          </div>
           <div class="text-center">
             <%= f.text_field :title, placeholder:"一言", class:"bg-transparent"%>
             <%= f.text_field :name, placeholder:"観光地名", class:"bg-transparent" %>
           </div>
-          <div class="text-center m-3">
+          <div class="d-flex justify-content-center mb-2">
             <%= f.text_field :good_part, placeholder:"良い点", class:"bg-transparent" %>
             <%= f.text_field :bad_part, placeholder:"悪い点", class:"bg-transparent"%>
           </div>
           <div class="text-center" id="rate_stars">
             <label>初心者おすすめ度</label>
           </div>
-          <div class="text-center m-3">
+          <div class="d-flex justify-content-center mb-2">
             <%= f.attachment_field :image %>
           </div>
           <div class="text-center">

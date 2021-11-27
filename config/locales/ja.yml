@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      hobby:
+        title: 一言
+        introduction: おすすめポイント
+      user:
+        name: 名前
