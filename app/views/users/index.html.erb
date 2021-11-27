@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= render "layouts/sidebar" %>
+    </div>
+    <div class="col-md-7 border-left border-right pt-2">
+      <h1 class="text-center">ユーザ一覧</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>画像</th>
+            <th>名前</th>
+            <th>メール</th>
+            <th></th>
+            <th>状態</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user.each do |user| %>
+            <tr>
+              <td><%= attachment_image_tag user, :profile_image, size: "50x50", fallback: "user-gf1c075314_1280.png", class:"rounded-circle" %></td>
+              <td>
+                <%= link_to user_path(user.id), class:"text-dark" do %>
+                  <%= user.name %>
+                <% end %>
+              </td>
+              <td><%= user.email %></td>
+              <td><%= link_to "退会", user_unsubscribe_path(user.id), class:"nav-link text-light" %></td>
+              <td><%= user.is_deleted %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col text-center">
+      <%= render "layouts/recommendation", hobby: @osusume, user: @user %>
+    </div>
+  </div>
+</div>

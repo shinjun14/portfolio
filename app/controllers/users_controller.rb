@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @user = User.all
+    @osusume = Hobby.all.order(created_at: :desc).limit(3)
+  end
+
   def show
     @user = User.find(params[:id])
     @hobbies = @user.hobbies
@@ -46,6 +51,15 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :profile_image)
+  end
+
+  def user_admin
+    @users = User.all
+    if current_user.admin == false
+        redirect_to user_path(@user.id)
+    else
+        render action: "index"
+    end
   end
 
 end
