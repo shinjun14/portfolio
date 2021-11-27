@@ -50,8 +50,15 @@ class HobbiesController < ApplicationController
   def create
     @hobby = Hobby.new(hobby_params)
     @hobby.user_id = current_user.id
-    @hobby.save
-    redirect_back(fallback_location: root_path)
+    if @hobby.save
+      flash[:notice] = "You have created book successfully."
+      redirect_back(fallback_location: root_path)
+    else
+      @hobbies = Hobby.where(category:"games").order(created_at: :desc)
+      @osusume = Hobby.all.order(created_at: :desc).limit(3)
+      @user = current_user
+      render :games
+    end
   end
 
   def edit

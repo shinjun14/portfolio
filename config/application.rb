@@ -18,5 +18,8 @@ module Seeking
     config.time_zone = 'Tokyo'
 
     config.i18n.default_locale = :ja
+
+    config.assets.paths << Rails.root.join('public')
+    config.assets.precompile << %w( star-off.png star-on.png star-half.png )
   end
 end
