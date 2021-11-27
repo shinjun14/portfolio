@@ -2,15 +2,16 @@
   <div class="row m-3">
     <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6 my-5">
       <h3 class="text-center mb-5"><strong>本当に退会しますか？</strong></h3>
-      <p class="text-center">退会すると、会員登録情報や</p>
-      <p class="text-center">これまでの投稿やブックマークなどが観覧できなくなります。</p>
-      <p class="text-center">退会する場合は、退会をするをクリックしてください。</p>
+      <p class="text-center">退会すると、会員登録情報やこれまでの投稿やブックマーク</p>
+      <p class="text-center">などが観覧できなくなりますが、これまでの投稿や</p>
+      <p class="text-center">コメントは残ります退会する場合は退会ボタン</p>
+      <p class="text-center">をクリックしてください。</p>
       <div class="form-group row justify-content-center">
       <div class="mr-3">
-        <%= link_to "退会しない", user_path(current_user.id), class:"btn btn-primary" %>
+        <%= link_to "戻る", user_path(current_user.id), class:"btn btn-primary" %>
       </div>
       <div>
-        <%= link_to "退会する", user_withdraw_path(current_user.id), method: :patch, data: {confirm: '本当に退会しますか？'} , class:"btn btn-danger" %>
+        <%= link_to "退会", user_withdraw_path(current_user.id), method: :patch, data: {confirm: '本当に退会しますか？'} , class:"btn btn-danger" %>
       </div>
       </div>
     </div>
