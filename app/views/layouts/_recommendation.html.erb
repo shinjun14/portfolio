@@ -10,7 +10,7 @@
       </di>
       <div>
         <%= link_to hobby_path(hobby.id) do %>
-          <%= attachment_image_tag hobby, :image, format: 'jpg', size: "80x60" %>
+          <%= attachment_image_tag hobby, :image, format: 'jpg', size: "80x60", fallback: "Image-1.jpg" %>
         <% end %>
       </div>
       <hr>

@@ -8,15 +8,10 @@
           <% end %>
           <li><%= link_to "My Page", user_path(current_user.id), class:"nav-link text-light" %></li>
           <li><%= link_to "Book Mark", bookmarks_path, class:"nav-link text-light" %></li>
-          <li><%= link_to "About", movies_path, class:"nav-link text-light" %></li>
+          <li><%= link_to "About", homes_about_path, class:"nav-link text-light" %></li>
           <li><%= link_to "利用規約", homes_terms_path, class:"nav-link text-light" %></li>
-          <li><%= link_to "退会", user_unsubscribe_path(current_user.id), class:"nav-link text-light" %></li>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link text-light" %></li>
-        <% else %>
-          <li><%= link_to "ログイン", new_user_session_path, class:"nav-link text-light" %></li>
-          <li><%= link_to "新規登録", new_user_registration_path, class:"nav-link text-light" %></li>
-          <li><%= link_to "About", movies_path, class:"nav-link text-light" %></li>
-          <li><%= link_to "利用規約", homes_terms_path, class:"nav-link text-light" %></li>
+          <li><%= link_to "退会", user_unsubscribe_path(current_user.id), class:"nav-link text-dark" %></li>
         <% end %>
       </ul>
     </div>

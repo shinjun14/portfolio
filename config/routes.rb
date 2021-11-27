@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   #home関係
   root 'homes#top'
   get 'homes/terms'#利用規約
+  get 'homes/about'
 
   #ユーザー
   get 'users/bookmarks' =>'users#bookmarks', as: 'bookmarks'

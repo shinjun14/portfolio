@@ -1,8 +1,15 @@
 <% @hobby.comments.each do |comment| %>
   <div class="m-2">
-    <%= attachment_image_tag comment.user, :profile_image, size: "50x50", fallback: "user-gf1c075314_1280.png", class:"rounded-circle" %>
-    <%= comment.user.name %>
-    <%= hobby.created_at.to_s(:datetime_jp) %> <!--コメント日時 -->
-    <%= comment.comment %>
+    <div>
+      <%= attachment_image_tag comment.user, :profile_image, size: "50x50", fallback: "user-gf1c075314_1280.png", class:"rounded-circle" %><br>
+      <%= comment.user.name %>
+    </div>
+    <div>
+      <%= @hobby.created_at.to_s(:datetime_jp) %> :<!--コメント日時 -->
+      <%= comment.comment %>
+      <% if hobby.user == current_user || current_user.admin? %>
+        <%= link_to "削除", hobby_comment_path(comment.hobby, comment), method: :delete, remote: true, class:"btn btn-danger"%>
+      <% end %>
+    </div>
   </div>
 <% end %>

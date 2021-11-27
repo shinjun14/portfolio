@@ -5,6 +5,10 @@ class HomesController < ApplicationController
     @hobby = Hobby
   end
 
+  def about
+    @osusume = Hobby.all.order(created_at: :desc).limit(3)
+  end
+
   def terms
     @user = User
     @hobby = Hobby
