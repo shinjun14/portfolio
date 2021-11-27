@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    if current_user.admin == false
+      redirect_to user_path(current_user.id)
+    end
     @user = User.all
     @osusume = Hobby.all.order(created_at: :desc).limit(3)
   end
@@ -58,7 +61,7 @@ class UsersController < ApplicationController
     if current_user.admin == false
         redirect_to user_path(@user.id)
     else
-        render action: "index"
+      render action: "index"
     end
   end
 
