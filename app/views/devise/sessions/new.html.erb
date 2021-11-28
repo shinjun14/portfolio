@@ -24,8 +24,15 @@
           </div>
         <% end %>
 
-        <div class="actions text-center">
-          <%= f.submit "Log in" %>
+        <div class="text-center">
+          <div class="mb-3">
+            <%= f.submit "Log in", class:"btn btn-light btn-lg text-dark rounded-pill" %>
+          </div>
+          <div>
+            <%= link_to new_user_registration_path do %>
+              <h2 class="btn btn-light btn-lg text-dark rounded-pill">新規登録画面</h2>
+            <% end %>
+          </div>
         </div>
       <% end %>
     </div>
