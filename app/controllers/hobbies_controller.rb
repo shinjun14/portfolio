@@ -51,7 +51,7 @@ class HobbiesController < ApplicationController
     @hobby = Hobby.new(hobby_params)
     @hobby.user_id = current_user.id
     if @hobby.save
-      flash[:notice] = "You have created book successfully."
+      flash[:notice] = "投稿成功しました。"
       redirect_back(fallback_location: root_path)
 
     elsif @hobby.category == "sports"

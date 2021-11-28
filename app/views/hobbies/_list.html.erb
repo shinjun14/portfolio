@@ -20,7 +20,7 @@
       (<%= hobby.name %>)
       <%= link_to "コメント#{hobby.comments.count}件", hobby_path(hobby.id), class:"text-dark" %> <!--コメント数 -->
       <% if hobby.user == current_user || current_user.admin? %> <!--削除機能 -->
-        <%= link_to "削除", hobby_path(hobby), method: :delete, class:"btn btn-danger" %>
+        <%= link_to "削除", hobby_path(hobby), method: :delete, data: {confirm: '投稿を削除しますか？'}, class:"btn btn-danger" %>
       <% end %>
     </div>
 

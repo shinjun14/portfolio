@@ -11,7 +11,6 @@
             <th>画像</th>
             <th>名前</th>
             <th>メール</th>
-            <th></th>
             <th>状態</th>
           </tr>
         </thead>
@@ -25,8 +24,13 @@
                 <% end %>
               </td>
               <td><%= user.email %></td>
-              <td><%= link_to "退会", user_unsubscribe_path(user.id), class:"nav-link text-light" %></td>
-              <td><%= user.is_deleted %></td>
+              <td>
+                <% if user.is_deleted == true %>
+                  <p class="text-dark">退会済み</p>
+                <% else %>
+                  <p class="text-success">有効</p>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

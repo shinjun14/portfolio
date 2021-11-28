@@ -1,26 +1,19 @@
 <% hobbies.each do |hobby| %>
   <div class="border p-4">
     <div class="ml-5 d-flex justify-content-between">
-      <%= link_to user_path(hobby.user.id) do %>
-        <%= attachment_image_tag hobby.user, :profile_image, size: "50x50", fallback: "user-gf1c075314_1280.png", class:"rounded-circle" %>
-        <strong><p class="text-dark"><%= hobby.user.name %></p></strong>
-      <% end %>
-      <div>
-        <% if hobby.favorited_by?(current_user) %>
-          <%= link_to hobby_favorites_path(hobby), method: :delete do %>
-            <i class="btn btn-dark fas fa-bookmark"></i>
-          <% end %>
-        <% else %>
-          <%= link_to hobby_favorites_path(hobby), method: :post do %>
-            <i class="btn btn-dark far fa-bookmark"></i>
-          <% end %>
+      <div class="text-center">
+        <%= link_to user_path(hobby.user.id) do %>
+          <%= attachment_image_tag hobby.user, :profile_image, size: "50x50", fallback: "user-gf1c075314_1280.png", class:"rounded-circle" %>
+          <strong><p class="text-dark"><%= hobby.user.name %></p></strong>
         <% end %>
       </div>
       <p id="hobby-rate-<%=hobby.id %>">
-        初心者おすすめ度
+        おすすめ度
       </p>
+      <%= hobby.created_at.to_s(:datetime_jp) %>
     </div>
 
+    <!-- 投稿内容 -->
     <div class="text-center mb-2">
       <strong><%= link_to hobby.title, hobby_path(hobby.id), class:"text-dark" %></strong>
       (<%= hobby.name %>)
@@ -31,17 +24,36 @@
     </div>
 
     <div class="text-center">
-      <%= attachment_image_tag hobby, :image, format: 'jpg', size: "350x300" %>
+      <%= link_to hobby_path(hobby.id) do %>
+        <%= attachment_image_tag hobby, :image, format: 'jpg', size: "300x250", fallback: "Image-1.jpg" %>
+      <% end %>
+    </div>
+
+    <div class="d-flex justify-content-around mt-3">
+    <!-- いいね機能 -->
+      <div class="text-center">
+        <div class="like-btn<%= hobby.id %>">
+          <%= render 'likes/like-btn', hobby: hobby %>
+        </div>
+      </div>
+      <!-- ブックマーク機能 -->
+      <div class="text-right">
+        <div class="bookmark-btn<%= hobby.id %>">
+          <%= render "favorites/bookmark-btn", hobby: hobby %>
+        </div>
+      </div>
     </div>
   </div>
-
   <script>
     $('#hobby-rate-<%= hobby.id %>').raty({
       size: 36,
       half: true,
       readOnly: true,
       score: "<%= hobby.rate %>",
-      path: '/assets/'
+      // path: '/assets/'
+      starOn: "<%= asset_path('star-on.png') %>",
+      starOff: "<%= asset_path('star-off.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>",
     });
   </script>
 <% end %>

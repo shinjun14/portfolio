@@ -56,7 +56,6 @@
 
       <!-- コメント機能 -->
       <div class="p-3 border-top border-left border-right">
-        <p>コメント数：<%= @hobby.comments.count %></p>
         <div class="commentsArea">
           <%= render "comments/comment", hobby: @hobby %>
         </div>

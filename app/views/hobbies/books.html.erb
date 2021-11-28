@@ -11,6 +11,7 @@
         <h1 class="text-center">Books</h1>
         <%= form_with model: @hobby, url:hobbies_path, local:true do |f| %>
           <%= f.hidden_field :category, :value => "books" %>
+          <h2 class="text-shadow text-success text-center"><%= flash[:notice] %></h2>
           <div>
             <%= render 'layouts/error_messages', model: f.object %>
           </div>
@@ -18,12 +19,12 @@
             <%= f.text_field :title, placeholder:"一言", class:"bg-transparent"%>
             <%= f.text_field :name, placeholder:"作品タイトル", class:"bg-transparent" %>
           </div>
-          <div class="d-flex justify-content-center mb-2">
+          <div class="d-flex justify-content-center mb-1">
             <%= f.text_field :good_part, placeholder:"良い点", class:"bg-transparent" %>
             <%= f.text_field :bad_part, placeholder:"悪い点", class:"bg-transparent"%>
           </div>
           <div class="text-center" id="rate_stars">
-            <label>初心者おすすめ度</label>
+            <label>おすすめ度</label>
           </div>
           <div class="text-center m-1">
             画像投稿
@@ -32,7 +33,7 @@
           <div class="text-center">
             <%= f.text_area :introduction, placeholder:"おすすめポイント", size: "40x5", class:"bg-transparent" %>
           </div>
-          <div class="text-center mb-5">
+          <div class="text-center mb-3">
             <input type="submit" name"commit" value="投稿" class="btn btn-primary" data-disable="Create Hobby" />
           </div>
         <% end %>
