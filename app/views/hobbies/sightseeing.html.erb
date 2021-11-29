@@ -11,7 +11,6 @@
         <h1 class="text-center">Sightseeing</h1>
         <%= form_with model: @hobby, url:hobbies_path, local:true do |f| %>
           <%= f.hidden_field :category, :value => "sightseeing" %>
-          <h2 class="text-shadow text-success text-center"><%= flash[:notice] %></h2>
           <div>
             <%= render 'layouts/error_messages', model: f.object %>
           </div>

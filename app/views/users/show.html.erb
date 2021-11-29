@@ -4,7 +4,6 @@
       <%= render "layouts/sidebar" %>
     </div>
     <div class="col-md-7 border-left border-right pt-2">
-      <h2 class="text-shadow text-center text-success"><%= flash[:notice] %></h2>
       <div class="d-flex justify-content-around">
         <div class="text-center">
           <%= attachment_image_tag @user, :profile_image, size: "50x50", fallback: "user-gf1c075314_1280.png", class:"rounded-circle" %>
