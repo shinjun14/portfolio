@@ -51,6 +51,10 @@ class HobbiesController < ApplicationController
     @hobby = Hobby.new(hobby_params)
     @hobby.user_id = current_user.id
     if @hobby.save
+      @tags = Vision.get_image_data(@hobby.image)
+      @tags.each do |tag|
+        @hobby.tags.create(name: tag)
+      end
       redirect_back(fallback_location: root_path)
 
     elsif @hobby.category == "sports"

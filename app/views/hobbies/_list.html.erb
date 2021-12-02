@@ -27,6 +27,11 @@
     <div class="text-center">
       <%= link_to hobby_path(hobby.id) do %>
         <%= attachment_image_tag hobby, :image, format: 'jpg', size: "300x250", fallback: "Image-1.jpg" %>
+      <% end %><br>
+    </div>
+    <div class="text-center mt-1">
+      <% hobby.tags.each do |tag| %>
+        <span class="label btn-primary"><%= tag.name %></span>
       <% end %>
     </div>
 

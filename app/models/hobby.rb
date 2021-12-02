@@ -1,5 +1,6 @@
 class Hobby < ApplicationRecord
 
+  has_many :tags, dependent: :destroy
   belongs_to :user
   has_many :comments, dependent: :destroy #1対n（コメント）
 
