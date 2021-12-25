@@ -1,28 +1,37 @@
-<div class="d-flex">
-  <div class="top-page col-6 border-right border-dark">
-    <div class="mt-4">
-      <h2 class="text-shadow">こちらのサイトでは、<br>
-      ゲーム、スポーツ、映画、観光、本など、
-      趣味に関するものを見つけたり、紹介することが
-      できるサイトです。</h2>
+<body style="background-color: black;">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-lg-6">
+      <div class="top-page">
+        <div class="mb-5">
+          <h2 class="text-shadow">こちらのサイトでは、<br>
+          ゲーム、スポーツ、映画、観光、本など、
+          趣味に関するものを見つけたり、紹介することが
+          できるサイトです。</h2>
+        </div>
+        <div class=>
+          <h2 class="text-shadow">自分のお気に入りを見つけて<br>たくさんのジャンルを経験<br>しましょう！</h2>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="col-6", style="background-color: black;">
-    <div class="text-center">
-      <span><%= image_tag '0B607AFF-A933-4ACF-A24B-964CD5A55EE6.png', size: '390x338' %></span>
-    </div>
-    <div class="text-light">
-      <h2>利用前するには<strong>ログイン</strong>もしくは<br><strong>新規登録</strong>が必要です。</h2>
-    </div>
-    <div class="mt-5 mb-1">
-      <%= link_to new_user_session_path do %>
-        <h2 class="btn btn-light btn-lg text-dark rounded-pill">ログイン</h2>
-      <% end %>
-    </div>
-    <div class="mb-3">
-      <%= link_to new_user_registration_path do %>
-        <h2 class="btn btn-light btn-lg text-dark rounded-pill">新規登録</h2>
-      <% end %>
+    <div class="col-6", style="background-color: black;">
+      <div class="text-center">
+        <span><%= image_tag '0B607AFF-A933-4ACF-A24B-964CD5A55EE6.png', size: '290x238' %></span>
+      </div>
+      <div class="text-light">
+        <h2>利用前するには<strong>ログイン</strong>もしくは<br><strong>新規登録</strong>が必要です。</h2>
+      </div>
+      <div class="mt-5 mb-1">
+        <%= link_to new_user_session_path do %>
+          <h2 class="btn btn-light btn-lg text-dark rounded-pill">ログイン</h2>
+        <% end %>
+      </div>
+      <div class="mb-3">
+        <%= link_to new_user_registration_path do %>
+          <h2 class="btn btn-light btn-lg text-dark rounded-pill">新規登録</h2>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
+</body>

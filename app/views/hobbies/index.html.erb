@@ -5,35 +5,35 @@
       <%= render "layouts/sidebar" %>
     </div>
 
-    <div class="col-xs-12 col-md-6 border-left border-right pt-2 d-flex flex-wrap">
+    <div class="col-sm-12 col-md-6 border-left border-right pt-2 d-flex flex-wrap">
       <a class="games", href="/hobbies/games">
         <div>
-          <h2 class="text">Games</h2>
+          <h2 class="text">ゲーム</h2>
         </div>
       </a>
       <a class="sports", href="/hobbies/sports">
         <div>
-          <h2 class="text">Sports</h2>
+          <h2 class="text">スポーツ</h2>
         </div>
       </a>
       <a class="movies", href="/hobbies/movies">
         <div>
-          <h2 class="text">Movies</h2>
+          <h2 class="text">映画</h2>
         </div>
       </a>
       <a class="sightseeing", href="/hobbies/sightseeing">
         <div>
-          <h2 class="text">Sightseeing</h2>
+          <h2 class="text">観光</h2>
         </div>
       </a>
       <a class="books", href="/hobbies/books">
         <div>
-          <h2 class="text">Books</h2>
+          <h2 class="text">本</h2>
         </div>
       </a>
     </div>
 
-    <div class="col">
+    <div class="col border-top">
       <!-- おすすめ一覧 -->
       <%= render "layouts/recommendation", hobby: @osusume, user: @user %>
     </div>
