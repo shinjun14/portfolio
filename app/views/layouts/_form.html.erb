@@ -1,8 +1,10 @@
 <% if user_signed_in? %>
     <%= form_with url: search_path,method: :get, local: true do |f| %>
-      <%= f.text_field :content, placeholder:"search" %>
-      <%= hidden_field_tag :model, 'hobby' %>
-      <%= hidden_field_tag :method, 'partial' %>
-      <%= f.submit'検索' %>
+      <div class="d-flex">
+        <%= f.text_field :content, placeholder:"search" %>
+        <%= hidden_field_tag :model, 'hobby' %>
+        <%= hidden_field_tag :method, 'partial' %>
+        <%= f.submit'検索' %>
+      </div>
     <% end %>
 <% end %>

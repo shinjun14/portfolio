@@ -19,7 +19,7 @@
     <header class="sticky-top">
       <div class="container">
         <div class="row">
-          <div class="col d-flex">
+          <div class="col-xs-12 col-md-6 d-flex justify-content-between">
             <div>
               <% if user_signed_in? %>
                 <a class="logo" href="/hobbies"><span><%= image_tag "0B607AFF-A933-4ACF-A24B-964CD5A55EE6.png", size: '100x60' %></span></a>
@@ -27,23 +27,26 @@
                 <a class="logo" href="/"><span><%= image_tag "0B607AFF-A933-4ACF-A24B-964CD5A55EE6.png", size: '100x60' %></span></a>
               <% end %>
             </div>
-            <div class="mx-auto">
-              <nav class="navbar navbar-expand">
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                  <div class="navigation">
-                    <ul class="navbar-nav ml-auto mt-2">
+            <div>
+              <nav class="navbar navbar-expand-md  navbar-light">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#bs-navi" aria-controls="bs-navi" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div>
+                  <div class="collapse navbar-collapse" id="bs-navi">
+                    <ul class="navbar-nav mt-2">
                       <li><%= link_to "Games", games_path, class:"fas fa-gamepad nav-link text-light" %></li>
                       <li><%= link_to "Sports", sports_path, class:"fas fa-basketball-ball nav-link text-light" %></li>
                       <li><%= link_to "Movies", movies_path, class:"fas fa-film nav-link text-light" %></li>
                       <li><%= link_to "Sightseeing", sightseeing_path, class:"fas fa-plane nav-link text-light" %></li>
                       <li><%= link_to "Books", books_path, class:"fas fa-book-open nav-link text-light" %></li>
+                      <li>
+                        <%= render 'layouts/form', hobby: @hobby, user: @user %>
+                      </li>
                     </ul>
                   </div>
                 </div>
               </nav>
-            </div>
-            <div class="float-right mt-3">
-              <%= render 'layouts/form', hobby: @hobby, user: @user %>
             </div>
           </div>
         </div>

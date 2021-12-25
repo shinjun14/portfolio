@@ -37,3 +37,7 @@ https://docs.google.com/spreadsheets/d/1I4dl7CUFUU8i7JV-iySt2HL7M0jE_pDaKgjO4-Z1
 ## 使用素材
 https://pixabay.com/ja/   （画像）
 https://www.photo-ac.com/　　（画像）
+
+<div class="col mt-3">
+  <%= render 'layouts/form', hobby: @hobby, user: @user %>
+</div>

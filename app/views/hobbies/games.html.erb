@@ -7,7 +7,7 @@
 
     <div class="col-md-7 border-left border-right pt-2">
       <!-- 投稿フォーム -->
-      <div class="border">
+      <div>
         <h1 class="text-center">Games</h1>
         <%= form_with model: @hobby, url:hobbies_path, local:true do |f| %>
           <%= f.hidden_field :category, :value => "games" %>
